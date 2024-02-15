@@ -1,0 +1,47 @@
+// Define questions and answers
+const questions = [
+    {
+        question: "What is the capital of France?",
+        options: ["Paris", "London", "Berlin", "Rome"],
+        answer: "Paris"
+    },
+    {
+        question: "What is the largest mammal?",
+        options: ["Elephant", "Whale", "Giraffe", "Hippopotamus"],
+        answer: "Whale"
+    },
+    {
+        question: "Which planet is known as the Red Planet?",
+        options: ["Mars", "Venus", "Jupiter", "Saturn"],
+        answer: "Mars"
+    }
+];
+
+// Function to ask a question
+function askQuestion(questionObj) {
+    console.log(questionObj.question);
+    questionObj.options.forEach((option, index) => {
+        console.log(`${index + 1}. ${option}`);
+    });
+    const userAnswer = parseInt(prompt("Enter the number of your answer:"));
+    if (userAnswer > 0 && userAnswer <= questionObj.options.length) {
+        const selectedOption = questionObj.options[userAnswer - 1];
+        if (selectedOption === questionObj.answer) {
+            console.log("Correct!");
+        } else {
+            console.log(`Incorrect! The correct answer is ${questionObj.answer}.`);
+        }
+    } else {
+        console.log("Invalid input. Please enter a valid option number.");
+    }
+}
+
+// Function to start the game
+function startGame() {
+    questions.forEach(question => {
+        askQuestion(question);
+    });
+}
+
+// Start the game
+startGame();
